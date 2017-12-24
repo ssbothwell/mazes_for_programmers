@@ -27,7 +27,7 @@ def sidewinder(grid: Grid) -> Grid:
                 cell.link(cell.east)
 
 if __name__ == "__main__":
-    g = Grid(10,10)
+    g = Grid(4,4)
     sidewinder(g)
     g.pretty_print()
 
