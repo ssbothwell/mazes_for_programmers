@@ -35,7 +35,7 @@ def aldous_broder(grid: Grid) -> Grid:
 
 
 if __name__ == "__main__":
-    g = Grid(14,14)
+    g = Grid(10,10)
     aldous_broder(g)
     g.pretty_print()
 
