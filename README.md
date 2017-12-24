@@ -29,9 +29,9 @@
 This is a set of python implementations of the algorithms 
 described in Jamis Buck's book Mazes For Programmers. 
 
-* Binary Tree
-* Sidewinder
-* Aldous Broder
+* Binary Tree ✓
+* Sidewinder ✓
+* Aldous Broder ✓
 * Wilson's
 * Eller's
 * Growing Tree
