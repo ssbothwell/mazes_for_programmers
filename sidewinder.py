@@ -10,16 +10,24 @@ from grid import Grid
 
 
 def sidewinder(grid: Grid) -> Grid:
-    for row in grid.grid:
+    for row in reversed(grid.grid):
+        run = []
         for cell in row:
-            neighbors = list(filter(lambda x: x != None, [cell.north, cell.east]))
-            if neighbors:
-                index = randint(0, len(neighbors) -1)
-                neighbor = neighbors[index]
-                cell.link(neighbor)
+            run.append(cell)
+            choice = randint(0, 1)
+            if ((choice == 1 and cell.north is not None) or 
+                cell.east is None):
+                close_out = True
+                index = randint(0, len(run) - 1)
+                run_choice = run[index]
+                if run_choice.north:
+                    run_choice.link(run_choice.north)
+                run = []
+            else:
+                cell.link(cell.east)
 
 if __name__ == "__main__":
-    g = Grid(4,4)
-    binary_tree(g)
+    g = Grid(10,10)
+    sidewinder(g)
     g.pretty_print()
 
