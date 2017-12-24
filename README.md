@@ -2,6 +2,7 @@
 ### Python Examples
 #### Solomon Bothwell ssbothwell@gmail.com
 
+```
 +---+---+---+---+---+---+---+---+---+---+
 |       |       |                   |   |
 +   +   +---+   +   +---+---+---+   +   +
@@ -23,6 +24,7 @@
 +---+---+   +---+---+---+   +   +---+---+
 |                                       |
 +---+---+---+---+---+---+---+---+---+---+
+```
 
 This is a set of python implementations of the algorithms 
 described in Jamis Buck's book Mazes For Programmers. 
