@@ -41,5 +41,6 @@ class Cell:
 
 
     def neighbors(self) -> list:
-        return [self.north, self.south, self.east, self.west]
+        neighbors = [self.north, self.south, self.east, self.west]
+        return [ cell for cell in neighbors if cell is not None ]
         
