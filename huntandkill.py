@@ -28,7 +28,6 @@ def pick_random(arr: list) -> Any:
 
 def hunt_and_kill(grid: Grid) -> None:
     visited = defaultdict(bool)
-    unvisited = grid.size() - 1
     # Start with a random cell
     curr_cell = grid.random_cell()
     visited[curr_cell] = True

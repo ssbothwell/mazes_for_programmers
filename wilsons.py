@@ -33,7 +33,7 @@ def wilson(grid: Grid) -> Grid:
     starting_cell = pick_random(unvisited)
     unvisited.remove(starting_cell)
 
-    while len(unvisited) > 0:
+    while unvisited:
         cell = pick_random(unvisited)
         path = [cell]
 
@@ -51,8 +51,6 @@ def wilson(grid: Grid) -> Grid:
         for i, cell in enumerate(path[:-1]):
             cell.link(path[i+1])
             unvisited.remove(cell)
-
-        
 
 
 if __name__ == "__main__":
