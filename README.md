@@ -33,9 +33,9 @@ described in Jamis Buck's book Mazes For Programmers.
 * Sidewinder ✓
 * Aldous Broder ✓
 * Wilson's ✓
+* Hunt-and-Kill ✓
 * Eller's
 * Growing Tree
-* Hunt-and-Kill
 * Kruskal's
 * Prim's
 * Recursive Backtracker

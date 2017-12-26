@@ -54,6 +54,10 @@ class Grid:
 
             print(row_middle_output)
             print(row_bottom_output)
+    
+    
+    def cells(self) -> List[Cell]:
+        return [cell for row in self.grid for cell in row]
 
                 
 if __name__ == "__main__":
