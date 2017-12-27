@@ -11,7 +11,7 @@ Based on examples from "Mazes For Programmers" by Jamis Buck
 4. If it hasn't been visited then link it to the prior cell.
 5. Repeat until all cells have been visited.
 """
-from typing import Any
+from typing import Any, Iterable
 from collections import defaultdict
 from random import randint
 from grid import Grid

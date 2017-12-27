@@ -1,11 +1,11 @@
 """
 Grid Class for maze graphs
 """
-from typing import List
+from typing import List, Iterable, Iterator
 from cell import Cell
 from random import randint
 
-class Grid:
+class Grid(Iterable):
     def __init__(self, rows: int, cols: int) -> None:
         self.rows = rows
         self.cols = cols
@@ -52,18 +52,20 @@ class Grid:
             print(row_bottom_output)
     
     
-    def cells(self) -> List[Cell]:
-        return [cell for row in self.grid for cell in row]
-
     def __len__(self) -> int:
         return self.rows * self.cols
 
-    def __iter__(self):
-        for el in self.cells():
-            yield el
 
-    def __reversed__(self):
-        return reversed(self.cells())
+    def __iter__(self) -> Iterator[Cell]:
+        for row in self.grid:
+            for cell in row:
+                yield cell
+
+
+    def __reversed__(self) -> Iterator[Cell]:
+        for row in reversed(self.grid):
+            for cell in reversed(row):
+                yield cell
                 
 if __name__ == "__main__":
     g = Grid(4,4)
