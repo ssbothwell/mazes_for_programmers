@@ -32,10 +32,8 @@ def hunt_and_kill(grid: Grid) -> None:
     curr_cell = grid.random_cell()
     visited[curr_cell] = True
     while curr_cell:
-        # All the unvisited neighbors of curr_cell
-        neighbors = list(filter(lambda x: x != None and
-                                visited[x] == False,
-                                curr_cell.neighbors()))
+        neighbors = [ x for x in curr_cell.neighbors() if
+                      x != None and visited[x] == False ]
         if neighbors:
             next_cell = pick_random(neighbors)
             curr_cell.link(next_cell)
@@ -43,9 +41,8 @@ def hunt_and_kill(grid: Grid) -> None:
             visited[curr_cell] = True
         else:
             curr_cell = None
-            for cell in grid.cells():
+            for cell in grid:
                 if not visited[cell]:
-                    # All the visited neighbors of cell
                     neighbors = [ x for x in cell.neighbors() if
                                   x != None and visited[x] == True ]
                     if neighbors:
@@ -56,7 +53,6 @@ def hunt_and_kill(grid: Grid) -> None:
                         break
 
 
-                    #print(randint(0, 99999))
 if __name__ == "__main__":
     g = Grid(14,14)
     hunt_and_kill(g)

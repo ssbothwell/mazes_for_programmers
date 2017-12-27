@@ -59,6 +59,10 @@ class Grid:
     def cells(self) -> List[Cell]:
         return [cell for row in self.grid for cell in row]
 
+
+    def __getitem__(self, index):
+        return self.cells()[index]
+
                 
 if __name__ == "__main__":
     g = Grid(4,4)
