@@ -14,7 +14,7 @@ class Cell:
                  west = None) -> None:
         self.row = row
         self.col = col
-        self.links = defaultdict(bool)
+        self.links = defaultdict(bool) # type: dict
         self.north = north
         self.south = south
         self.east  = east

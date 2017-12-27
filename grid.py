@@ -58,9 +58,12 @@ class Grid:
     def __len__(self) -> int:
         return self.rows * self.cols
 
-    def __getitem__(self, index):
-        return self.cells()[index]
+    def __iter__(self):
+        for el in self.cells():
+            yield el
 
+    def __reversed__(self):
+        return reversed(self.cells())
                 
 if __name__ == "__main__":
     g = Grid(4,4)

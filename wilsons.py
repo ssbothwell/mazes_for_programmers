@@ -24,19 +24,14 @@ def pick_random(arr: list) -> Any:
     return arr[randint(0, len(arr) - 1)]
 
 
-def wilson(grid: Grid) -> Grid:
+def wilson(grid: Grid) -> None:
     unvisited = []
-    for row in grid.grid:
-        for cell in row:
-            unvisited.append(cell)
-    
+    for cell in grid:
+        unvisited.append(cell)
     starting_cell = pick_random(unvisited)
     unvisited.remove(starting_cell)
 
     while unvisited:
-        cell = pick_random(unvisited)
-        path = [cell]
-
         cell = pick_random(unvisited)
         start = cell
         path = [cell]
