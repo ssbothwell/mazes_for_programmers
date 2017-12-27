@@ -18,7 +18,7 @@ from grid import Grid
 
 def aldous_broder(grid: Grid) -> Grid:
     visited = defaultdict(bool)
-    unvisited = grid.size() - 1
+    unvisited = len(grid) - 1
     curr_cell = grid.random_cell()
     while unvisited > 0:
         neighbors = list(filter(lambda x: x != None, curr_cell.neighbors()))
@@ -35,7 +35,7 @@ def aldous_broder(grid: Grid) -> Grid:
 
 
 if __name__ == "__main__":
-    g = Grid(10,20)
+    g = Grid(10,10)
     aldous_broder(g)
     g.pretty_print()
 

@@ -29,10 +29,6 @@ class Grid:
         return self.grid[randint(0, self.rows - 1)][randint(0, self.cols - 1)]
 
 
-    def size(self):
-        return self.rows * self.cols
-
-
     def pretty_print(self) -> None:
         top = "+" + ("---+" * self.cols)
         print(top)
@@ -59,6 +55,8 @@ class Grid:
     def cells(self) -> List[Cell]:
         return [cell for row in self.grid for cell in row]
 
+    def __len__(self) -> int:
+        return self.rows * self.cols
 
     def __getitem__(self, index):
         return self.cells()[index]
