@@ -33,7 +33,7 @@ def hunt_and_kill(grid: Grid) -> None:
     visited[curr_cell] = True
     while curr_cell:
         neighbors = [ x for x in curr_cell.neighbors() if
-                      x != None and visited[x] == False ]
+                      visited[x] == False ]
         if neighbors:
             next_cell = pick_random(neighbors)
             curr_cell.link(next_cell)
