@@ -12,7 +12,6 @@ Based on examples from "Mazes For Programmers" by Jamis Buck
 5. Repeat until all cells have been visited.
 """
 from typing import Any, Iterable
-from collections import defaultdict
 from random import randint
 from grid import Grid
 
@@ -23,16 +22,14 @@ def pick_random(arr: list) -> Any:
 
 
 def aldous_broder(grid: Grid) -> None:
-    visited = defaultdict(bool) # type: dict
     unvisited = len(grid) - 1
     curr_cell = grid.random_cell()
     while unvisited:
         neighbors = curr_cell.neighbors()
         next_cell = pick_random(neighbors)
 
-        if not visited[next_cell]:
+        if not next_cell.visited:
             curr_cell.link(next_cell)
-            visited[next_cell] = True
             unvisited -= 1
         curr_cell = next_cell
 

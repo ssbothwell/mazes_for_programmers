@@ -14,7 +14,6 @@ repeat until all cells are visited.
 
 """
 from operator import indexOf
-from collections import defaultdict
 from typing import Any
 from random import randint
 from grid import Grid

@@ -19,16 +19,20 @@ class Cell:
         self.south = south
         self.east  = east
         self.west  = west
+        self.visited = False
 
     
     def link(self, cell, bidi: bool = True) -> None:
         self.links[cell] = True
+        self.visited = True
         if bidi:
             cell.link(self, False)
 
 
     def unlink(self, cell, bidi: bool = True) -> None:
         self.links[cell] = False
+        if len(list(filter(lambda x: x == True))) == 0:
+            self.visited = False
         if bidi:
             cell.unlink(self, False)
 

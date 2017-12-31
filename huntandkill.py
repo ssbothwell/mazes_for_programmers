@@ -16,7 +16,6 @@ Based on examples from "Mazes For Programmers" by Jamis Buck
 
 """
 from typing import Any
-from collections import defaultdict
 from random import randint
 from grid import Grid
 
@@ -27,29 +26,25 @@ def pick_random(arr: list) -> Any:
 
 
 def hunt_and_kill(grid: Grid) -> None:
-    visited = defaultdict(bool) # type: dict
     # Start with a random cell
     curr_cell = grid.random_cell()
-    visited[curr_cell] = True
     while curr_cell:
         neighbors = [ x for x in curr_cell.neighbors() if
-                      visited[x] == False ]
+                      not x.visited ]
         if neighbors:
             next_cell = pick_random(neighbors)
             curr_cell.link(next_cell)
             curr_cell = next_cell
-            visited[curr_cell] = True
         else:
             curr_cell = None
             for cell in grid:
-                if not visited[cell]:
+                if not cell.visited:
                     neighbors = [ x for x in cell.neighbors() if
-                                  x != None and visited[x] == True ]
+                                  not x.visited ]
                     if neighbors:
                         curr_cell = cell
                         next_cell = pick_random(neighbors)
                         curr_cell.link(next_cell)
-                        visited[curr_cell] = True
                         break
 
 
