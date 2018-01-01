@@ -31,7 +31,7 @@ class Cell:
 
     def unlink(self, cell, bidi: bool = True) -> None:
         self.links[cell] = False
-        if len(list(filter(lambda x: x == True))) == 0:
+        if len(list(filter(lambda x: x == True, self.links))) == 0:
             self.visited = False
         if bidi:
             cell.unlink(self, False)
