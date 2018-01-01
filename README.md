@@ -36,7 +36,7 @@ described in Jamis Buck's book Mazes For Programmers.
 * Hunt-and-Kill ✓
 * Recursive Backtracker ✓
 * Randomized Kruskal's ✓
+* Prim's ✓
 * Eller's
 * Growing Tree
-* Prim's
 * Recursive Division
