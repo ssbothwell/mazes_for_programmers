@@ -66,6 +66,14 @@ class Grid(Iterable):
         for row in reversed(self.grid):
             for cell in reversed(row):
                 yield cell
+
+
+    def __getitem__(self, index) -> Cell:
+        if index > (self.rows*self.cols - 1):
+            raise IndexError("list index out of range")
+        for i, cell in enumerate(self):
+            if i == index:
+                return cell
                 
 if __name__ == "__main__":
     g = Grid(4,4)
