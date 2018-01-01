@@ -1,5 +1,5 @@
 """
-Simplified Prim's Algorithm for Maze Generation 
+Prim's Algorithm for Maze Generation 
 
 Solomon Bothwell
 
