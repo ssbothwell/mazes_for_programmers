@@ -27,7 +27,8 @@ def ellers(grid: Grid) -> None:
     D = disjoint_set()
     for row in grid.grid:
         for cell in row:
-            D.make_set(cell) 
+            if not D.find(cell):
+                D.make_set(cell) 
         for i, cell in enumerate(row[:-1]):
             join = randint(0, 1)
             x = D.find(row[i])
@@ -40,12 +41,12 @@ def ellers(grid: Grid) -> None:
             for sett in sets:
                 shuffle(sett)
                 for i, cell in enumerate(sett):
-                    if not i or not randint(0, 5):
+                    if not i or not randint(0, 2):
                         south = cell.south
                         cell.link(south)
                         D.make_set(south)
                         D.union(cell, south)
-                        
+
 
 class disjoint_set(object):
     def __init__(self):
