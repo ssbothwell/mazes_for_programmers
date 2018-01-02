@@ -12,9 +12,7 @@ Based on examples from "Mazes For Programmers" by Jamis Buck
    with its southern neighbor. 
 4. Repeat for each subsequent row.
 """
-from typing import Any, Callable
 from random import randint, shuffle
-from functools import reduce
 from grid import Grid
 
 
