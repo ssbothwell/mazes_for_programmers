@@ -38,5 +38,5 @@ described in Jamis Buck's book Mazes For Programmers.
 * Randomized Kruskal's ✓
 * Prim's ✓
 * Growing Tree ✓
-* Eller's
+* Eller's ✓
 * Recursive Division
