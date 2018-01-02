@@ -32,7 +32,7 @@ class Grid(Iterable):
     def pretty_print(self) -> None:
         top = "+" + ("---+" * self.cols)
         print(top)
-        for  row in self.grid:
+        for row in self.grid:
             row_middle_output = "|"
             row_bottom_output = "+"
             for cell in row:
