@@ -23,10 +23,9 @@ def ellers(grid: Grid) -> None:
             if not D.find(cell):
                 D.make_set(cell) 
         for i, cell in enumerate(row[:-1]):
-            join = randint(0, 1)
             x = D.find(row[i])
             y = D.find(row[i+1])
-            if x != y and (not join or not cell.south):
+            if x != y and (not randint(0, 1) or not cell.south):
                 D.union(row[i], row[i+1])
                 row[i].link(row[i+1])
         if cell.south:
@@ -34,7 +33,7 @@ def ellers(grid: Grid) -> None:
             for sett in sets:
                 shuffle(sett)
                 for i, cell in enumerate(sett):
-                    if not i or not randint(0, 2):
+                    if cell in row and (not i or not randint(0, 2)):
                         south = cell.south
                         cell.link(south)
                         D.make_set(south)
