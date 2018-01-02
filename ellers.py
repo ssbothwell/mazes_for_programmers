@@ -38,8 +38,9 @@ def ellers(grid: Grid) -> None:
         if cell.south:
             sets = D.sets()
             for sett in sets:
+                shuffle(sett)
                 for i, cell in enumerate(sett):
-                    if not i or not randint(0, 2):
+                    if not i or not randint(0, 5):
                         south = cell.south
                         cell.link(south)
                         D.make_set(south)
