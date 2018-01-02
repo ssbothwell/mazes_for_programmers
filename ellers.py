@@ -18,11 +18,6 @@ from functools import reduce
 from grid import Grid
 
 
-def pick_random(arr: list) -> Any:
-    """ Return a random element from an array """
-    return arr[randint(0, len(arr) - 1)]
-
-
 def ellers(grid: Grid) -> None:
     D = disjoint_set()
     for row in grid.grid:
