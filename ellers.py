@@ -34,7 +34,7 @@ def ellers(grid: Grid) -> None:
                 shuffle(sett)
                 sett = list(filter(lambda x: x in row, sett))
                 for i, cell in enumerate(sett):
-                    if i == 0 or not randint(0, 3):
+                    if i == 0 or not randint(0, 2):
                         south = cell.south
                         cell.link(south)
                         D.make_set(south)
