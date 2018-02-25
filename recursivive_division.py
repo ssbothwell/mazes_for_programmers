@@ -20,67 +20,57 @@ def initialize_grid(grid: Grid) -> None:
             cell.link(neighbor)
 
 
-def divide(grid: Grid, row, col, height, width):
+def divide(grid: Grid, xstart, xend, ystart, yend):
     # Base Case:
-    if height <= 1 or width <= 1:
+    if (xend - xstart < 2
+        or yend - ystart < 2):
         return
-
-    divide_vertically(grid, height)
-    #divide_horizontally(grid, row, col, height, width)
-    #if height > width:
-    #    divide_horizontally(row, column, height, width)
-    #else:
-    #    divide_vertically(row, column, height, width)
-
-
-def divide_vertically(grid: Grid, ystart: int = 0,
-                      yend: int = 0) -> None:
-    if yend <= 1 or ystart == yend:
-        return
-     
-    wall = randint(ystart, yend)
-    if wall == 0:
-        return
-
-    tunnel = grid.grid[wall][randint(0,grid.rows-1)]
-    if wall != 0:
-        for cell in grid.grid[wall]:
-            cell.unlink(cell.north)
-        tunnel.link(tunnel.north)
-
-    # North Subgraph
-    divide_vertically(grid, 0, wall)
-    # South Subgraph
-    divide_vertically(grid, wall, yend)
     
+    if yend > xend:
+        # taller then wide
+        wall = randint(ystart, yend)
+        draw_horizontal(grid, xstart, xend-1, wall)
+        tunnel(grid, wall, randint(xstart, xend-1), True)
+        divide(grid, xstart, xend, ystart, wall)
+        divide(grid, xstart, xend, wall, yend)
 
-def divide_horizontally(grid: Grid, xstart: int = 0,
-                        xend: int = 0) -> None:
-    if xend <= 1 or xstart == xend:
-        return
-     
-    wall = randint(xstart, xend)
-    if wall == 0:
-        return
+    else:
+        # wider then tall
+        wall = randint(xstart, xend)
+        draw_vertical(grid, ystart, yend-1, wall)
+        tunnel(grid, wall, randint(ystart, yend-1), False)
+        divide(grid, xstart, wall, ystart, yend)
+        divide(grid, wall, xend, ystart, yend)
 
-    tunnel = grid.grid[randint(0,grid.cols-1)][wall]
-    if wall != 0:
-        for row in grid.grid:
-            cell = row[wall]
+def tunnel(grid: Grid, row: int, col: int, north: bool) -> None:
+    cell = grid.grid[row][col]
+    if north and cell.north:
+        cell.link(cell.north)
+    if not north and cell.west:
+        cell.link(cell.west)
+
+
+def draw_horizontal(grid: Grid, xstart: int,
+                    xend: int, row: int) -> None:
+    for cell in grid.grid[row][xstart:xend+1]:
+        if not cell.north:
+            break
+        cell.unlink(cell.north)
+
+
+def draw_vertical(grid: Grid, ystart: int,
+                    yend: int, col: int) -> None:
+    for row in grid.grid[ystart:yend+1]:
+        cell = row[col]
+        if cell.west:
             cell.unlink(cell.west)
-        tunnel.link(tunnel.west)
-
-    # West Subgraph
-    divide_horizontally(grid, 0, wall)
-    # East Subgraph
-    divide_horizontally(grid, wall, xend)
 
 
 if __name__ == "__main__":
     g = Grid(8,8)
     initialize_grid(g)
-    g.pretty_print()
-    divide_vertically(g, 0, 7)
-    divide_horizontally(g, 0, 7)
+    divide(g, 0, 7, 0, 7)
+    #divide_vertically(g, 0, 7)
+    #divide_horizontally(g, 0, 7)
     g.pretty_print()
 
