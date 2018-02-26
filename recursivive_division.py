@@ -20,25 +20,31 @@ def initialize_grid(grid: Grid) -> None:
             cell.link(neighbor)
 
 
+debug = 2
 def divide(grid: Grid, xstart, xend, ystart, yend):
+    global debug 
+    if debug == 0:
+        return
     # Base Case:
-    if (xend - xstart < 2
-        or yend - ystart < 2):
+    if (xend - xstart < 2 or yend - ystart < 2):
         return
     
-    if yend > xend:
+    debug -= 1
+    if (yend - ystart) > (xend - xstart):
         # taller then wide
-        wall = randint(ystart, yend)
+        wall = randint(ystart+1, yend)
+        print(xstart, xend, ystart, yend, wall)
         draw_horizontal(grid, xstart, xend-1, wall)
-        tunnel(grid, wall, randint(xstart, xend-1), True)
+        #tunnel(grid, wall, randint(xstart, xend), True)
         divide(grid, xstart, xend, ystart, wall)
         divide(grid, xstart, xend, wall, yend)
 
     else:
         # wider then tall
-        wall = randint(xstart, xend)
-        draw_vertical(grid, ystart, yend-1, wall)
-        tunnel(grid, wall, randint(ystart, yend-1), False)
+        wall = randint(xstart+1, xend)
+        print(xstart, xend, ystart, yend, wall)
+        draw_vertical(grid, ystart, yend, wall)
+        #tunnel(grid, wall, randint(ystart, yend), False)
         divide(grid, xstart, wall, ystart, yend)
         divide(grid, wall, xend, ystart, yend)
 
@@ -70,7 +76,7 @@ if __name__ == "__main__":
     g = Grid(8,8)
     initialize_grid(g)
     divide(g, 0, 7, 0, 7)
-    #divide_vertically(g, 0, 7)
-    #divide_horizontally(g, 0, 7)
+    #draw_horizontal(g, 0, 7, 4)
+    #draw_vertical(g, 0, 7, 1)
     g.pretty_print()
 
