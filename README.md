@@ -39,4 +39,4 @@ described in Jamis Buck's book Mazes For Programmers.
 * Prim's ✓
 * Growing Tree ✓
 * Eller's ✓
-* Recursive Division
+* Recursive Division ✓
